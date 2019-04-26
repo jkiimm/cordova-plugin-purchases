@@ -20,6 +20,10 @@
     NSString *apiKey = command.arguments[0];
     NSString *appUserID = command.arguments[1];
 
+    if (appUserID == (id)[NSNull null] || appUserID.length == 0) {
+      appUserID = nil;
+    }
+
     self.products = [NSMutableDictionary new];
     [RCPurchases configureWithAPIKey:apiKey appUserID:appUserID];
     RCPurchases.sharedPurchases.delegate = self;
